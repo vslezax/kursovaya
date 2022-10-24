@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/kursovaya.dir/main.cpp.o CMakeFiles/kursovaya.dir/tree.cpp.o CMakeFiles/kursovaya.dir/Fano.cpp.o CMakeFiles/kursovaya.dir/executeFano.cpp.o  -o kursovaya.exe -Wl,--out-implib,libkursovaya.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

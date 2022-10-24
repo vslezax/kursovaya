@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="kursovaya" targetName="kursovaya" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3e95f460-7a1f-4b88-bc3b-339223e99364" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="2FGpQLeha1DSSU3nBMuxRQQphao" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+  </component>
+  <component name="RunManager">
+    <configuration name="kursovaya" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="kursovaya" TARGET_NAME="kursovaya" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="kursovaya" RUN_TARGET_NAME="kursovaya">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e95f460-7a1f-4b88-bc3b-339223e99364" name="Default Changelist" comment="" />
+      <created>1664128257593</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664128257593</updated>
+      <workItem from="1664128259553" duration="38000" />
+      <workItem from="1664128304514" duration="370000" />
+      <workItem from="1664128685852" duration="216000" />
+      <workItem from="1664128915822" duration="14000" />
+      <workItem from="1664128938838" duration="677000" />
+      <workItem from="1664129643876" duration="4174000" />
+      <workItem from="1664133849677" duration="1781000" />
+      <workItem from="1664258436964" duration="84000" />
+      <workItem from="1664384904899" duration="11388000" />
+      <workItem from="1664469486606" duration="2608000" />
+      <workItem from="1664483720101" duration="2565000" />
+      <workItem from="1664818024635" duration="23000" />
+      <workItem from="1664907399861" duration="2616000" />
+      <workItem from="1664910083024" duration="290000" />
+      <workItem from="1664983004169" duration="1524000" />
+      <workItem from="1665081808429" duration="5945000" />
+      <workItem from="1665088931624" duration="3939000" />
+      <workItem from="1665158220320" duration="4675000" />
+      <workItem from="1665431216284" duration="148000" />
+      <workItem from="1665767747580" duration="5462000" />
+      <workItem from="1666351718893" duration="7250000" />
+      <workItem from="1666367091115" duration="9619000" />
+      <workItem from="1666381055689" duration="1399000" />
+      <workItem from="1666634752623" duration="589000" />
+      <workItem from="1666635357199" duration="9009000" />
+      <workItem from="1666646300045" duration="3922000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="703" y="258" key="#xdebugger.XInspectDialog" timestamp="1666373912865">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="703" y="258" key="#xdebugger.XInspectDialog/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666373912865" />
+    <state width="405" height="466" key="DebuggerActiveHint" timestamp="1664130371787">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="405" height="466" key="DebuggerActiveHint/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1664130371787" />
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1666649838666">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
+    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1666649838666">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="272" key="GridCell.Tab.0.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
+    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1666649838666">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="272" key="GridCell.Tab.0.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
+    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1666649838666">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="272" key="GridCell.Tab.0.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
+    <state width="1637" height="270" key="GridCell.Tab.1.bottom" timestamp="1666648830762">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="270" key="GridCell.Tab.1.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
+    <state width="1637" height="270" key="GridCell.Tab.1.center" timestamp="1666648830762">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="270" key="GridCell.Tab.1.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
+    <state width="1637" height="270" key="GridCell.Tab.1.left" timestamp="1666648830762">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="270" key="GridCell.Tab.1.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
+    <state width="1637" height="270" key="GridCell.Tab.1.right" timestamp="1666648830762">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1637" height="270" key="GridCell.Tab.1.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
+    <state width="848" height="513" key="XDebugger.FullValuePopup" timestamp="1664396146324">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="848" height="513" key="XDebugger.FullValuePopup/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1664396146323" />
+    <state x="496" y="233" key="run.anything.popup" timestamp="1666650224160">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="496" y="233" key="run.anything.popup/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666650224160" />
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1666358095517">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666358095517" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="this-&gt;storedCode[0]" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
