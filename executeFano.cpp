@@ -119,7 +119,7 @@ void decompile(const std::string& path){
 
     Node* head = new Node;
     string line;
-    while (getline(keyFile, line)) {
+    /*while (getline(keyFile, line)) {
         if ((line.empty()) || (line.at(1) != ' ')) continue;
 
         Node* thisNode = head;
@@ -146,6 +146,29 @@ void decompile(const std::string& path){
         cout << endl;
         //thisNode->setValue(stoi(valueInLine, nullptr, 10));
         if (view == 'Y') cout << "Add: " << thisNode->returnValue() << "[" << (char)thisNode->returnValue() << "] = " << thisNode->returnStr() << endl;
+    }
+    */
+    string bits;
+    int value;
+    while (keyFile >> value >> bits) {
+
+        Node* thisNode = head;
+        string str;
+        for (int i = 0; i < bits.length(); i++){
+            if (bits.at(i) == '0'){
+                if (thisNode->returnLeftNode() == nullptr) thisNode = thisNode->createLeft(str);
+                else thisNode = thisNode->returnLeftNode();
+                str = thisNode->returnStr();
+                continue;
+            }
+            if (bits.at(i) == '1'){
+                if (thisNode->returnRightNode() == nullptr) thisNode = thisNode->createRight(str);
+                else thisNode = thisNode->returnRightNode();
+                str = thisNode->returnStr();
+            }
+        }
+        thisNode->setValue(value);
+        if (view == 'Y') cout << "Add: " << thisNode->returnValue() << " = " << thisNode->returnStr() << endl;
     }
 
     keyFile.close();
@@ -204,7 +227,7 @@ void decompile(const std::string& path){
         }
         if (stream.at(i) == '0') thisNode = thisNode->returnLeftNode();
         if (stream.at(i) == '1') thisNode = thisNode->returnRightNode();
-        if (i == stream.length()-1){
+        if (i == stream.length()){
             cout << "executeFano.cpp::decompile(const std::string& path)::185::5 | stream error -> not found relations for symbol";
             exit(3);
         }

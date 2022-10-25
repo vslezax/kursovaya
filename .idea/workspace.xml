@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
       <config projectName="kursovaya" targetName="kursovaya" />
@@ -11,7 +29,16 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e95f460-7a1f-4b88-bc3b-339223e99364" name="Default Changelist" comment="" />
+    <list default="true" id="3e95f460-7a1f-4b88-bc3b-339223e99364" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/executeFano.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/executeFano.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/executeFano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/executeFano.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +48,11 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="2FGpQLeha1DSSU3nBMuxRQQphao" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,10 +60,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="git" />
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="kursovaya" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="kursovaya" TARGET_NAME="kursovaya" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="kursovaya" RUN_TARGET_NAME="kursovaya">
@@ -76,12 +113,25 @@
       <workItem from="1666381055689" duration="1399000" />
       <workItem from="1666634752623" duration="589000" />
       <workItem from="1666635357199" duration="9009000" />
-      <workItem from="1666646300045" duration="3922000" />
+      <workItem from="1666646300045" duration="4795000" />
+      <workItem from="1666689551347" duration="837000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="703" y="258" key="#xdebugger.XInspectDialog" timestamp="1666373912865">
@@ -92,38 +142,38 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="405" height="466" key="DebuggerActiveHint/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1664130371787" />
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1666649838666">
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1666690058168">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
-    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1666649838666">
+    <state width="1637" height="272" key="GridCell.Tab.0.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666690058168" />
+    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1666690058168">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
-    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1666649838666">
+    <state width="1637" height="272" key="GridCell.Tab.0.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666690058168" />
+    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1666690058168">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
-    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1666649838666">
+    <state width="1637" height="272" key="GridCell.Tab.0.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666690058168" />
+    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1666690058168">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666649838666" />
-    <state width="1637" height="270" key="GridCell.Tab.1.bottom" timestamp="1666648830762">
+    <state width="1637" height="272" key="GridCell.Tab.0.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666690058168" />
+    <state width="1637" height="270" key="GridCell.Tab.1.bottom" timestamp="1666651112136">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
-    <state width="1637" height="270" key="GridCell.Tab.1.center" timestamp="1666648830762">
+    <state width="1637" height="270" key="GridCell.Tab.1.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
+    <state width="1637" height="270" key="GridCell.Tab.1.center" timestamp="1666651112136">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
-    <state width="1637" height="270" key="GridCell.Tab.1.left" timestamp="1666648830762">
+    <state width="1637" height="270" key="GridCell.Tab.1.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
+    <state width="1637" height="270" key="GridCell.Tab.1.left" timestamp="1666651112136">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
-    <state width="1637" height="270" key="GridCell.Tab.1.right" timestamp="1666648830762">
+    <state width="1637" height="270" key="GridCell.Tab.1.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
+    <state width="1637" height="270" key="GridCell.Tab.1.right" timestamp="1666651112136">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666648830762" />
+    <state width="1637" height="270" key="GridCell.Tab.1.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
     <state width="848" height="513" key="XDebugger.FullValuePopup" timestamp="1664396146324">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
