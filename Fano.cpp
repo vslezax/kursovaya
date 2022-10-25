@@ -138,12 +138,32 @@ void Fano::generateArchived(const string &pathToFile, char viewGeneration) {
             stream.erase(0, 8);
         }
     }
-    if (stream.length() >= 0){
+    while (stream.length() > 0){
+        string outStr;
+        if (stream.length() > 8){
+            string k(stream, 0, 8);
+            outStr = k;
+        }
+        else{
+            outStr = stream;
+            while (outStr.length() < 8) outStr.push_back('0');
+        }
+        if (viewGeneration == 'Y'){
+            string temp(stream, 8, stream.length());
+            cout << "[" << outStr << "]" << temp << " = " << std::hex << std::uppercase << "[" << stoi(outStr, nullptr, 2) << "]" << endl;
+        }
+        cout << outStr << endl;
+        char outCh = (char) stoi(outStr, nullptr, 2);
+        archiveFile.write(&outCh, 1);
+        stream.erase(0, 8);
+    }
+    /*if (stream.length() >= 0){
         while (stream.length() < 8) stream.push_back('0');
-        char outCh = (char) stoi(stream, nullptr, 2);
+        cout << stream;
+        char outCh = (char) stol(stream, nullptr, 2);
         if (viewGeneration == 'Y') cout << "[" << stream << "]" << " = " << std::hex << std::uppercase << "[" << (int)outCh << "]" << endl;
         archiveFile.write(&outCh, 1);
-    }
+    }*/
 
     archiveFile.close();
     streamFile.close();
