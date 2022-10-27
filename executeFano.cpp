@@ -83,23 +83,20 @@ void decompile(const std::string& path){
     std::cin >> pathToImportFile;
     cout << endl << "Working with '" << path + "\\" + pathToImportFile << "'" << endl;
     std::ifstream streamFile(path + "\\" + pathToImportFile, std::ios::binary | std::ios::in);
+    if (streamFile.fail()){
+        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | streamFile.fail() returns /* UNREACHABLE IMPORT FILE */";
+        exit(2);
+    }
 
     while (pathToImportFile.back() != '.') pathToImportFile.pop_back();
-
-    std::ifstream keyFile(path + "\\" + pathToImportFile + "key");
     pathToImportFile.pop_back();
+
     std::ofstream decompiledFile(path + "\\" + "DECOMPILED" + pathToImportFile, std::ios::binary | std::ios::out);
     if (!decompiledFile.fail()){
         decompiledFile.clear();
     }
-
     if (decompiledFile.fail()){
         cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | decompiledFile.fail() returns /* UNREACHABLE IMPORT FILE */";
-        exit(2);
-    }
-
-    if (keyFile.fail()){
-        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | keyFile.fail() returns /* UNREACHABLE IMPORT FILE */";
         exit(2);
     }
 
@@ -110,9 +107,30 @@ void decompile(const std::string& path){
     }
 
     Node* head = new Node;
-    string bits;
-    int value;
-    while (keyFile >> value >> bits) {
+    char count;
+    streamFile.read(&count, 1);
+
+    while (count > 0) {
+        // Считывание символа
+        char value;
+        streamFile.read(&value, 1);
+        // Считывание нулей
+        char nulls;
+        streamFile.read(&nulls, 1);
+        // Считывание значения
+        char bit;
+        streamFile.read(&bit, 1);
+
+        string bits;
+        while (bit){
+            bits.push_back((bit & 1) + '0');
+            bit >>= 1;
+        }
+        std::reverse(bits.begin(), bits.end());
+        while (nulls > 0){
+            bits.insert(0, "0");
+            nulls--;
+        }
 
         Node* thisNode = head;
         string str;
@@ -131,13 +149,7 @@ void decompile(const std::string& path){
         }
         thisNode->setValue(value);
         if (view == 'Y') cout << "Add: " << thisNode->returnValue() << " = " << thisNode->returnStr() << endl;
-    }
-
-    keyFile.close();
-
-    if (streamFile.fail()){
-        cout << "executeFano.cpp::decompile(const std::string& path)::106::9 | streamFile.fail() returns /* UNREACHABLE IMPORT FILE */";
-        exit(2);
+        count--;
     }
 
     view = 0;
@@ -147,6 +159,10 @@ void decompile(const std::string& path){
     }
 
     if (view == 'Y') cout << endl;
+
+    char endBits;
+    streamFile.read(&endBits, 1);
+    endBits = 8 - endBits;
 
     string stream;
 
@@ -177,6 +193,11 @@ void decompile(const std::string& path){
         std::cin >> view;
     }
 
+    if (view == 'Y') cout << endl << "Stream: " << stream << endl << endl;
+    while (endBits > 0){
+        stream.pop_back();
+        endBits--;
+    }
     if (view == 'Y') cout << endl << "Stream: " << stream << endl << endl;
 
     Node* thisNode = head;

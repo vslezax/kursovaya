@@ -92,7 +92,6 @@ void Fano::generateKeyFile(const string &path) {
     }
 
     char size = storedCode.size();
-    cout << (int)size;
     keyFile.write(&size, 1);
 
     // Данные записываются: [символ][количество нулей в начале][HEX значения]
@@ -123,9 +122,9 @@ void Fano::generateKeyFile(const string &path) {
 
 void Fano::generateArchived(const string &pathToFile, char viewGeneration) {
     std::ofstream archiveFile(pathToFile + ".archive", std::ios::binary | std::ios::out | std::ios::app);
-    if (archiveFile.fail()){
-        cout << endl << "Fano.cpp::126::9 -- generateArchived() returns /* UNREACHABLE IMPORT FILE */";
-    }
+//    if (archiveFile.fail()){
+//        cout << endl << "Fano.cpp::126::9 -- generateArchived() returns /* UNREACHABLE IMPORT FILE */";
+//    }
 
     std::ifstream streamFile(pathToFile, std::ios::binary | std::ios::in);
     if (streamFile.fail()){
@@ -148,24 +147,27 @@ void Fano::generateArchived(const string &pathToFile, char viewGeneration) {
         }
 
         stream += it->second;
-        cout << endl << stream;
     }
 
     char size = stream.size() % 8;
+    cout << "size:" << size;
     archiveFile.write(&size, 1);
 
     while (stream.length() > 0){
-        cout << endl << stream;
         if (stream.length() > 8){
             string k(stream, 0, 8);
             char outCh = stoi(k, nullptr, 2);
             archiveFile.write(&outCh, 1);
             stream.erase(0, 8);
+            if (viewGeneration == 'Y') cout << endl << "[" << k << "]";
             continue;
         }
 
+        while (stream.length() != 8) stream.push_back('0');
         char outCh = stoi(stream, nullptr, 2);
         archiveFile.write(&outCh, 1);
+        if (viewGeneration == 'Y') cout << endl << "[" << stream << "]";
+        break;
     }
 
     archiveFile.close();
