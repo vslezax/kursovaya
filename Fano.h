@@ -15,7 +15,7 @@ public:
     Fano(const string& pathToFile, char viewGeneration);
 
     friend std::ostream& operator<<(std::ostream& outLine, const Fano& outClass);
-    void generateKeyFile(const string& path);
+    void generateKeys(const string& path);
     void generateArchived(const string &pathToFile, char viewGeneration);
 
     ~Fano();

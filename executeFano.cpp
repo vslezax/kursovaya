@@ -55,8 +55,8 @@ void startAlgorithm(const std::string& path){
     }
     if (viewGeneration == 'Y') cout << main << endl;
 
-    // Генератор key.txt
-    main.generateKeyFile(path + "\\" + pathToImportFile + ".key");
+    // Генератор keys
+    main.generateKeys(path + "\\" + pathToImportFile + ".archive");
 
     viewGeneration = 0;
     while ((viewGeneration != 'Y') && (viewGeneration != 'N')){
@@ -66,14 +66,14 @@ void startAlgorithm(const std::string& path){
     }
     if (viewGeneration == 'Y') std::cout << main;
 
-    // Создание archive
+    // Заполнение archive
     viewGeneration = 0;
     while ((viewGeneration != 'Y') && (viewGeneration != 'N')){
         cout << "View processing? Y/N ";
         std::cin >> viewGeneration;
         cout << endl;
     }
-    main.generateArchived(path + "\\" + pathToImportFile, viewGeneration);
+    main.generateArchived(path + "\\" + pathToImportFile + ".archive", viewGeneration);
 
     cout << endl << endl;
     cout << path + "\\" + pathToImportFile + ".archive  -  created.";
