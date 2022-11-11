@@ -33,13 +33,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Fano.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fano.h" beforeDir="false" afterPath="$PROJECT_DIR$/Fano.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/Fano.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/Fano.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/executeFano.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/executeFano.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/tree.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/tree.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe.stackdump" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe.stackdump" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/executeFano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/executeFano.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/executeFano.h" beforeDir="false" afterPath="$PROJECT_DIR$/executeFano.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tree.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tree.h" beforeDir="false" afterPath="$PROJECT_DIR$/tree.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +79,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="kursovaya" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="kursovaya" TARGET_NAME="kursovaya" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="kursovaya" RUN_TARGET_NAME="kursovaya">
+    <configuration name="kursovaya" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-c -v c:\lms1.docx" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="kursovaya" TARGET_NAME="kursovaya" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="kursovaya" RUN_TARGET_NAME="kursovaya">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -123,6 +128,10 @@
       <workItem from="1666726825243" duration="137000" />
       <workItem from="1666871437211" duration="52000" />
       <workItem from="1666873259436" duration="11000" />
+      <workItem from="1667496057160" duration="16000" />
+      <workItem from="1667572376088" duration="914000" />
+      <workItem from="1667652163297" duration="20000" />
+      <workItem from="1668179009261" duration="3445000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed decompile(...)">
       <created>1666690460008</created>
@@ -162,6 +171,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="decompile(...) stream while at the end" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="294" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1668181592821">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="294" y="160" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668181592821" />
     <state x="703" y="258" key="#xdebugger.XInspectDialog" timestamp="1666373912865">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -170,38 +183,38 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="405" height="466" key="DebuggerActiveHint/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1664130371787" />
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom" timestamp="1666721502895">
+    <state width="1637" height="271" key="GridCell.Tab.0.bottom" timestamp="1668182454538">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666721502895" />
-    <state width="1637" height="272" key="GridCell.Tab.0.center" timestamp="1666721502895">
+    <state width="1637" height="271" key="GridCell.Tab.0.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668182454538" />
+    <state width="1637" height="271" key="GridCell.Tab.0.center" timestamp="1668182454538">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666721502895" />
-    <state width="1637" height="272" key="GridCell.Tab.0.left" timestamp="1666721502895">
+    <state width="1637" height="271" key="GridCell.Tab.0.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668182454538" />
+    <state width="1637" height="271" key="GridCell.Tab.0.left" timestamp="1668182454537">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666721502895" />
-    <state width="1637" height="272" key="GridCell.Tab.0.right" timestamp="1666721502895">
+    <state width="1637" height="271" key="GridCell.Tab.0.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668182454537" />
+    <state width="1637" height="271" key="GridCell.Tab.0.right" timestamp="1668182454538">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="272" key="GridCell.Tab.0.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666721502895" />
-    <state width="1637" height="270" key="GridCell.Tab.1.bottom" timestamp="1666651112136">
+    <state width="1637" height="271" key="GridCell.Tab.0.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668182454538" />
+    <state width="1637" height="270" key="GridCell.Tab.1.bottom" timestamp="1668179626627">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
-    <state width="1637" height="270" key="GridCell.Tab.1.center" timestamp="1666651112136">
+    <state width="1637" height="270" key="GridCell.Tab.1.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668179626627" />
+    <state width="1637" height="270" key="GridCell.Tab.1.center" timestamp="1668179626627">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
-    <state width="1637" height="270" key="GridCell.Tab.1.left" timestamp="1666651112136">
+    <state width="1637" height="270" key="GridCell.Tab.1.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668179626627" />
+    <state width="1637" height="270" key="GridCell.Tab.1.left" timestamp="1668179626627">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
-    <state width="1637" height="270" key="GridCell.Tab.1.right" timestamp="1666651112136">
+    <state width="1637" height="270" key="GridCell.Tab.1.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668179626627" />
+    <state width="1637" height="270" key="GridCell.Tab.1.right" timestamp="1668179626627">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="270" key="GridCell.Tab.1.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1666651112136" />
+    <state width="1637" height="270" key="GridCell.Tab.1.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668179626627" />
     <state width="848" height="513" key="XDebugger.FullValuePopup" timestamp="1664396146324">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

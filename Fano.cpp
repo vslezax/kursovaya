@@ -12,7 +12,7 @@ bool compare(pair<char, int> a, pair<char, int> b){
     return a.second > b.second;
 }
 
-Fano::Fano(const string& pathToFile, char viewGeneration) {
+Fano::Fano(const string& pathToFile, bool v) {
     vector< pair<int, int> >::iterator iterator;
 
     std::ifstream file(pathToFile, std::ios::binary | std::ios::in);
@@ -38,7 +38,7 @@ Fano::Fano(const string& pathToFile, char viewGeneration) {
     for (int i = 0; i < storedUsages.size(); i++){
         temporaryFreqArray[i] = storedUsages.at(i).second;
     }
-    makeTree(temporaryFreqArray, storedUsages.size(), head, viewGeneration);
+    makeTree(temporaryFreqArray, storedUsages.size(), head, v);
 
     // Сейчас обход по дереву, где char и binary string
     returnValues(head, 0, &storedCode);
@@ -83,37 +83,68 @@ vector< pair<int, int> >::iterator findVectorIt(vector<pair<int, int>>* vec, int
     return iterator;
 }
 
-void Fano::generateKeys(const string &path) {
-    std::ofstream archiveFile(path, std::ios::binary | std::ios::out);
+void Fano::generateKeyFile(const string &path) {
+    std::ofstream keyFile;
+    keyFile.open(path, std::ios::binary);
 
-    char outCh = (char)storedCode.size();
-    archiveFile.write(&outCh, 1);
-    for (int i = 0; i < storedCode.size(); i++){
-        outCh = storedCode.at(i).first;
-        archiveFile.write(&outCh, 1);
-        outCh = (char)stoi(storedCode.at(i).second, nullptr, 2);
-        archiveFile.write(&outCh, 1);
+    if (!keyFile.fail()){
+        keyFile.clear();
     }
 
-    archiveFile.close();
+    char size = storedCode.size();
+    keyFile.write(&size, 1);
+
+    // Данные записываются: [символ][количество нулей в начале][HEX значения]
+    // Если значение начинается с 0, то количество нулей до первой единицы записывается во вторые []
+    //
+    // '0100', HEX представление 4 = '100', но из этого не построится дерево.
+    // То есть запишется: [символ][01][04]
+    //
+    // Если значение начинается с 1, то ничего не трубется.
+    // То есть запишется: [символ][00][значение]
+
+    for (int i = 0; i < storedCode.size(); i++){
+        char first = storedCode.at(i).first;
+        char second = stoi(storedCode.at(i).second, nullptr, 2);
+
+        char null = 0;
+        while ((storedCode.at(i).second[(int)null] == '0') && (null < storedCode.at(i).second.size())){
+            null++;
+        }
+
+        keyFile.write(&first, 1);
+        keyFile.write(&null, 1);
+        keyFile.write(&second, 1);
+        std::cout << std::dec << i << " ";
+        if ((i % 100 == 0) && (i > 100)){
+            std::cout << std::endl;
+        }
+    }
+
+    keyFile.close();
 }
 
-void Fano::generateArchived(const string &pathToFile, char viewGeneration) {
-    std::ofstream archiveFile(pathToFile + ".archive", std::ios::binary | std::ios::out);
-    if (!archiveFile.fail()){
-        archiveFile.clear();
-    }
+void Fano::generateArchived(const string &pathToFile, bool v) {
+    std::ofstream archiveFile(pathToFile + ".archive", std::ios::binary | std::ios::out | std::ios::app);
+//    if (archiveFile.fail()){
+//        cout << endl << "Fano.cpp::126::9 -- generateArchived() returns /* UNREACHABLE IMPORT FILE */";
+//    }
 
     std::ifstream streamFile(pathToFile, std::ios::binary | std::ios::in);
     if (streamFile.fail()){
-        cout << endl << "Fano.cpp::108::9 -- generateArchived() returns /* UNREACHABLE IMPORT FILE */";
+        cout << endl << "Fano.cpp::132::9 -- generateArchived() returns /* UNREACHABLE IMPORT FILE */";
         exit(3);
     }
 
     string stream;
     char ch;
 
-    while (streamFile.read(&ch, 1)){
+    if (v) cout << endl << "Scanning... ";
+    unsigned long i = 0;
+    while(streamFile.read(&ch, 1)){
+        if ((i % 1000000 == 0) && (i > 0) && (v)){
+            std::cout << "Scanned from imported file " << std::dec << i << " bytes." << std::endl;
+        }
         auto it = storedCode.begin();
         while ((it != storedCode.end()) && (it->first != ch)) ++it;
 
@@ -123,25 +154,31 @@ void Fano::generateArchived(const string &pathToFile, char viewGeneration) {
         }
 
         stream += it->second;
+        i++;
+    }
 
-        if (viewGeneration == 'Y') cout << stream << endl;
+    char size = stream.size() % 8;
+    std::cout << "size: " << (int)size;
+    archiveFile.write(&size, 1);
 
-        if (stream.length() >= 8){
-            string outStr(stream, 0, 8);
-            if (viewGeneration == 'Y'){
-                string temp(stream, 8, stream.length());
-                cout << "[" << outStr << "]" << temp << " = " << std::hex << std::uppercase << "[" << stoi(outStr, nullptr, 2) << "]" << endl;
-            }
-            char outCh = (char) stoi(outStr, nullptr, 2);
+    i = 0;
+    while (stream.length() > 0){
+        if ((i % 1000000 == 0) && (i > 0) && (v)){
+            std::cout << "Writed to export file " << std::dec << i << " bytes." << std::endl;
+        }
+        i++;
+        if (stream.length() > 8){
+            string k(stream, 0, 8);
+            char outCh = stoi(k, nullptr, 2);
             archiveFile.write(&outCh, 1);
             stream.erase(0, 8);
+            continue;
         }
-    }
-    if (stream.length() >= 0){
-        while (stream.length() < 8) stream.push_back('0');
-        char outCh = (char) stoi(stream, nullptr, 2);
-        if (viewGeneration == 'Y') cout << "[" << stream << "]" << " = " << std::hex << std::uppercase << "[" << (int)outCh << "]" << endl;
+
+        while (stream.length() != 8) stream.push_back('0');
+        char outCh = stoi(stream, nullptr, 2);
         archiveFile.write(&outCh, 1);
+        break;
     }
 
     archiveFile.close();

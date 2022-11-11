@@ -3,10 +3,10 @@
 
 #include <string>
 
-void startAlgorithm(const std::string& path);
+void err();
 
-void viewDirectory(const std::string& path);
+void startAlgorithm(const std::string& path, bool v);
 
-void decompile(const std::string& path);
+void decompile(const std::string& path, bool v);
 
 #endif //KURSOVAYA_EXECUTEFANO_H

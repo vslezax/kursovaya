@@ -12,11 +12,11 @@ private:
     vector< pair<int, int> > storedUsages;
     vector< pair<char, string> > storedCode;
 public:
-    Fano(const string& pathToFile, char viewGeneration);
+    Fano(const string& pathToFile, bool v);
 
     friend std::ostream& operator<<(std::ostream& outLine, const Fano& outClass);
-    void generateKeys(const string& path);
-    void generateArchived(const string &pathToFile, char viewGeneration);
+    void generateKeyFile(const string& path);
+    void generateArchived(const string &pathToFile, bool v);
 
     ~Fano();
 };
@@ -33,7 +33,7 @@ inline std::ostream& operator<<(std::ostream& outLine, const Fano& outClass){
     }
     cout << "Code:" << endl;
     for (auto &i : outClass.storedCode){
-        outLine << "'" << std::hex << std::uppercase << i.first << "'" << "[" << (char)i.first << "]";
+        outLine << "'" << std::hex << std::uppercase << (int)i.first << "'" << "[" << (char)i.first << "]";
         outLine << " = ";
         outLine << i.second;
         outLine << endl;

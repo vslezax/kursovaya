@@ -33,4 +33,4 @@ public:
 string renameStr(string str);
 void print(Node* node, int u);
 void returnValues(Node* node, int u, vector< pair<char, string> >* code);
-void makeTree(const int* array, int size, Node* node, char viewGeneration);
+void makeTree(const int* array, int size, Node* node, bool v);

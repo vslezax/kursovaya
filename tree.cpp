@@ -117,13 +117,13 @@ void returnValues(Node* node, int u, vector< pair<char, string> >* code){
 // Для перехода на следующий часть в конце алгоритма вызывается эта же функция, но для левого подмассива вызывается прошлый
 // указатель на начало массива-родителя, а для правого вызывается указатель на место разрыва массива-родителя.
 // Для каждого случая так же вызывается размер массива.
-void makeTree(const int* array, int arraySize, Node* node, char viewGeneration){
-    if (viewGeneration == 'Y') cout << endl;
+void makeTree(const int* array, int arraySize, Node* node, bool v){
+    if (v) cout << endl;
 
     // [Конец рекурсии]
     // Создание листьев, если у части массива остался 1 элемент
     if (arraySize == 1){
-        if (viewGeneration == 'Y') cout << "[" << array[0] << "] " << node->returnStr() << endl; // Вывод для наглядности
+        if (v) cout << "[" << array[0] << "] " << node->returnStr() << endl; // Вывод для наглядности
         node->setValue(array[0]); // Ввод получившегося символа в лист дерева
         return;
     }
@@ -168,7 +168,7 @@ void makeTree(const int* array, int arraySize, Node* node, char viewGeneration){
     delete[] differenceHolder;
 
     // Показательный вывод разделения
-    if (viewGeneration == 'Y'){
+    if (v){
         for (int j = 0; j < arraySize; j++){
             cout << array[j] << " ";
             if (j == index - 1) cout << "| ";
@@ -180,6 +180,6 @@ void makeTree(const int* array, int arraySize, Node* node, char viewGeneration){
     // Для левого массива, копирование битов с прошлого нода.
     // Для правого массива, копирование битов с прошлого нода.
     // В качестве аргументов в createLeft(...) входит returnStr() для записывания '0' или '1' к прошлому значению битов.
-    makeTree(array, index, node->createLeft( node->returnStr() ), viewGeneration);
-    makeTree(array + index, arraySize - index, node->createRight( node->returnStr() ), viewGeneration);
+    makeTree(array, index, node->createLeft( node->returnStr() ), v);
+    makeTree(array + index, arraySize - index, node->createRight( node->returnStr() ), v);
 }
