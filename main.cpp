@@ -1,4 +1,5 @@
 #include "executeFano.h"
+#include <iostream>
 #include <string>
 
 int main(int argc, char *argv[]) {
@@ -23,5 +24,7 @@ int main(int argc, char *argv[]) {
     }
 
     err();
+    std::cout << std::endl << "Use '-d' or '-c'!" << std::endl;
+    std::cout << "Maybe in '-c' 'c' not english letter?";
     return -1;
 }

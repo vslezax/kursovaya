@@ -6,27 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/Fano.cpp
-fstream
--
-iostream
--
-Fano.h
-/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/Fano.h
-algorithm
--
-
-/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/Fano.h
-tree.h
-/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/tree.h
-vector
--
-
-/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/tree.h
+/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/executeFano.h
 string
 -
+
+/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/main.cpp
+executeFano.h
+/cygdrive/c/Users/Administrator/CLionProjects/kursovaya/executeFano.h
 iostream
 -
-vector
+string
 -
 

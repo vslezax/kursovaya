@@ -7,7 +7,6 @@
 
 #include "Fano.h"
 
-
 void err(){
     std::cout << "Wrong arguments" << std::endl;
     std::cout << "Use: algorithmFano.exe [mode] [view] [path]" << std::endl;
@@ -28,6 +27,17 @@ void startAlgorithm(const std::string& path, bool v){
 
     std::cout << std::endl << "Generating keys..." << std::endl;
 
+    bool efficiency = main.isEfficiency();
+
+    if (!efficiency){
+        std::cout << "Attention: this file compressed inefficient." << std::endl;
+        main.generateInefficient(path);
+        cout << endl << endl;
+        cout << path + ".archive  -  created.";
+        cout << endl << "File successfully archived!" << endl << endl;
+        return;
+    }
+
     // Генератор keys
     main.generateKeyFile(path + ".archive");
 
@@ -36,9 +46,9 @@ void startAlgorithm(const std::string& path, bool v){
     // Создание archive
     main.generateArchived(path, v);
 
-    cout << endl << endl;
+    cout << endl;
     cout << path + ".archive  -  created.";
-    cout << endl << "File successfully archived!" << endl << endl;
+    cout << endl << "File successfully archived!";
 }
 
 Node* readTree(std::ifstream &source, bool debug){
@@ -54,10 +64,11 @@ Node* readTree(std::ifstream &source, bool debug){
         char nulls;
         source.read(&nulls, 1);
         // Считывание значения
-        char bit;
-        source.read(&bit, 1);
+        char byte;
+        source.read(&byte, 1);
 
         string bits;
+        unsigned char bit = byte;
         while (bit){
             bits.push_back((bit & 1) + '0');
             bit >>= 1;
@@ -91,17 +102,19 @@ Node* readTree(std::ifstream &source, bool debug){
     return head;
 }
 
-string readCompressedData(std::ifstream &source){
-    char endBits;
-    source.read(&endBits, 1);
-    endBits = 8 - endBits;
-
+void decompress(std::ofstream& target, Node* treeHead, std::ifstream& sourceData, bool debug){
     string stream;
 
-    int ch;
-    while (source.read((char*)&ch, 1)){
+    char endBits;
+    sourceData.read(&endBits, 1);
+    endBits = 8 - endBits;
+
+    char byte;
+    Node* thisNode = treeHead;
+    while (sourceData.read(&byte, 1)){
         int a = 0;
         string charToBin;
+        unsigned char ch = byte;
         while (ch){
             a++;
             if (ch & 1) charToBin += '1';
@@ -114,35 +127,25 @@ string readCompressedData(std::ifstream &source){
             a++;
         }
         stream += charToBin;
-    }
 
-    while (endBits > 0){
-        stream.pop_back();
-        endBits--;
-    }
-}
-
-void decompress(std::ofstream& target, Node* treeHead, string& sourceData, bool debug){
-    Node* head = treeHead;
-    for (int i = 0; i < sourceData.length(); i++){
-        if ((i % 200 == 0) && (i > 200) && (debug)){
-            std::cout << "Scanned " << i << " elements..." << std::endl;
+        if (sourceData.peek() == EOF){
+            while (endBits > 0){
+                stream.pop_back();
+                endBits--;
+            }
         }
-        if ((treeHead->returnLeftNode() == nullptr) && (treeHead->returnRightNode() == nullptr)){
-            char forHex = (char)treeHead->returnValue();
-            target.write(&forHex, 1);
-            treeHead = head;
+        while (true){
+            if ((thisNode->returnLeftNode() == nullptr) && (thisNode->returnRightNode() == nullptr)){
+                char forHex = (char)thisNode->returnValue();
+                target.write(&forHex, 1);
+                thisNode = treeHead;
+            }
+            if (stream.length() == 0) break;
+            if (stream.at(0) == '0') thisNode = thisNode->returnLeftNode();
+            if (stream.at(0) == '1') thisNode = thisNode->returnRightNode();
+            string temp = stream.substr(1);
+            stream = temp;
         }
-        if (sourceData.at(i) == '0') treeHead = treeHead->returnLeftNode();
-        if (sourceData.at(i) == '1') treeHead = treeHead->returnRightNode();
-        if (i == sourceData.length()){
-            cout << "executeFano.cpp::decompile(const std::string& path)::185::5 | stream error -> not found relations for symbol";
-            exit(3);
-        }
-    }
-    if ((treeHead->returnLeftNode() == nullptr) && (treeHead->returnRightNode() == nullptr)){
-        char forHex = (char)treeHead->returnValue();
-        target.write(&forHex, 1);
     }
 }
 
@@ -158,6 +161,24 @@ string resultFileName(string fromPath){
         fromPath.pop_back();
     }
     fromPath.pop_back();
+
+    return fromPath;
+}
+
+void decompressInefficient(std::ifstream& streamFile, std::ofstream& decompiledFile){
+    std::cout << "Copying data from stream file to decompiled file..." << std::endl;
+    char ch;
+    while (streamFile.read(&ch, 1)) decompiledFile.write(&ch, 1);
+}
+
+bool isInefficient(std::ifstream& file){
+    char check;
+    file >> check;
+    if (check == 0){
+        std::cout << "Attention: this file was compressed inefficient." << std::endl;
+        return true;
+    }
+    return false;
 }
 
 void decompile(const std::string& path, bool debug){
@@ -171,26 +192,26 @@ void decompile(const std::string& path, bool debug){
         exit(2);
     }
 
-    string newPath = resultFileName(path);
+    string newPath(resultFileName(path));
 
     std::ofstream decompiledFile(newPath, std::ios::binary | std::ios::out);
-    if (!decompiledFile.fail()){
-        decompiledFile.clear();
-    }
+    if (!decompiledFile.fail()) decompiledFile.clear();
     if (decompiledFile.fail()){
         cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | decompiledFile.fail() returns /* UNREACHABLE IMPORT FILE */";
         exit(2);
     }
 
+    if (isInefficient(streamFile)){
+        decompressInefficient(streamFile, decompiledFile);
+        return;
+    }
+
     std::cout << "Generating tree by stream data..." << std::endl;
     Node* treeHead = readTree(streamFile, debug);
 
-    std::cout << "Generating bits stream from stream file..." << std::endl;
-    string stream = readCompressedData(streamFile);
-
-
     std::cout << "Converting stream data to export file..." << std::endl;
-    //std::cout << stream << std::endl;
-    decompress(decompiledFile, treeHead, stream, debug);
+    decompress(decompiledFile, treeHead, streamFile, debug);
+    std::cout << std::endl << "" << newPath << " - created!" << std::endl;
+    std::cout << "File successfully unpacked!" << std::endl;
     decompiledFile.close();
 }

@@ -16,7 +16,9 @@ public:
 
     friend std::ostream& operator<<(std::ostream& outLine, const Fano& outClass);
     void generateKeyFile(const string& path);
+    void generateInefficient(const string& path);
     void generateArchived(const string &pathToFile, bool v);
+    bool isEfficiency();
 
     ~Fano();
 };
