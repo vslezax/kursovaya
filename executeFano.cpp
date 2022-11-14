@@ -41,54 +41,21 @@ void startAlgorithm(const std::string& path, bool v){
     cout << endl << "File successfully archived!" << endl << endl;
 }
 
-void decompile(const std::string& path, bool v){
-    std::ios_base::sync_with_stdio(false);
-
-    cout << endl << "Working with '" << path << "'" << endl;
-
-    std::ifstream streamFile(path, std::ios::binary | std::ios::in);
-    if (streamFile.fail()){
-        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | streamFile.fail() returns /* UNREACHABLE IMPORT FILE */";
-        exit(2);
-    }
-
-    // Переопределение пути в вид \\root\\DECOMPILED[file]
-    string newPath(path);
-    int it = newPath.length();
-    while (newPath[it] != '\\') --it;
-    ++it;
-    newPath.insert(it, "DECOMPILED");
-    it = newPath.length();
-    while (newPath[it-1] != '.'){
-        --it;
-        newPath.pop_back();
-    }
-    newPath.pop_back();
-
-    std::ofstream decompiledFile(newPath, std::ios::binary | std::ios::out);
-    if (!decompiledFile.fail()){
-        decompiledFile.clear();
-    }
-    if (decompiledFile.fail()){
-        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | decompiledFile.fail() returns /* UNREACHABLE IMPORT FILE */";
-        exit(2);
-    }
-
-    std::cout << "Generating tree by stream data..." << std::endl;
+Node* readTree(std::ifstream &source, bool debug){
     Node* head = new Node;
     char count;
-    streamFile.read(&count, 1);
+    source.read(&count, 1);
 
     while (count > 0) {
         // Считывание символа
         char value;
-        streamFile.read(&value, 1);
+        source.read(&value, 1);
         // Считывание нулей
         char nulls;
-        streamFile.read(&nulls, 1);
+        source.read(&nulls, 1);
         // Считывание значения
         char bit;
-        streamFile.read(&bit, 1);
+        source.read(&bit, 1);
 
         string bits;
         while (bit){
@@ -117,22 +84,22 @@ void decompile(const std::string& path, bool v){
             }
         }
         thisNode->setValue(value);
-        if (v) cout << "Add: " << thisNode->returnValue() << " = " << thisNode->returnStr() << endl;
+        if (debug) cout << "Add: " << thisNode->returnValue() << " = " << thisNode->returnStr() << endl;
         count--;
     }
+    if (debug) cout << endl;
+    return head;
+}
 
-    if (v) cout << endl;
-
+string readCompressedData(std::ifstream &source){
     char endBits;
-    streamFile.read(&endBits, 1);
+    source.read(&endBits, 1);
     endBits = 8 - endBits;
-
-    std::cout << "Generating bits stream from stream file..." << std::endl;
 
     string stream;
 
     int ch;
-    while (streamFile.read((char*)&ch, 1)){
+    while (source.read((char*)&ch, 1)){
         int a = 0;
         string charToBin;
         while (ch){
@@ -153,31 +120,77 @@ void decompile(const std::string& path, bool v){
         stream.pop_back();
         endBits--;
     }
+}
 
-    std::cout << "Converting stream data to export file..." << std::endl;
-    //std::cout << stream << std::endl;
-
-    Node* thisNode = head;
-    for (int i = 0; i < stream.length(); i++){
-        if ((i % 200 == 0) && (i > 200) && (v)){
+void decompress(std::ofstream& target, Node* treeHead, string& sourceData, bool debug){
+    Node* head = treeHead;
+    for (int i = 0; i < sourceData.length(); i++){
+        if ((i % 200 == 0) && (i > 200) && (debug)){
             std::cout << "Scanned " << i << " elements..." << std::endl;
         }
-        if ((thisNode->returnLeftNode() == nullptr) && (thisNode->returnRightNode() == nullptr)){
-            char forHex = (char)thisNode->returnValue();
-            decompiledFile.write(&forHex, 1);
-            thisNode = head;
+        if ((treeHead->returnLeftNode() == nullptr) && (treeHead->returnRightNode() == nullptr)){
+            char forHex = (char)treeHead->returnValue();
+            target.write(&forHex, 1);
+            treeHead = head;
         }
-        if (stream.at(i) == '0') thisNode = thisNode->returnLeftNode();
-        if (stream.at(i) == '1') thisNode = thisNode->returnRightNode();
-        if (i == stream.length()){
+        if (sourceData.at(i) == '0') treeHead = treeHead->returnLeftNode();
+        if (sourceData.at(i) == '1') treeHead = treeHead->returnRightNode();
+        if (i == sourceData.length()){
             cout << "executeFano.cpp::decompile(const std::string& path)::185::5 | stream error -> not found relations for symbol";
             exit(3);
         }
     }
-    if ((thisNode->returnLeftNode() == nullptr) && (thisNode->returnRightNode() == nullptr)){
-        char forHex = (char)thisNode->returnValue();
-        decompiledFile.write(&forHex, 1);
+    if ((treeHead->returnLeftNode() == nullptr) && (treeHead->returnRightNode() == nullptr)){
+        char forHex = (char)treeHead->returnValue();
+        target.write(&forHex, 1);
+    }
+}
+
+// Переопределение пути в вид \\root\\DECOMPILED[file]
+string resultFileName(string fromPath){
+    int it = fromPath.length();
+    while (fromPath[it] != '\\') --it;
+    ++it;
+    fromPath.insert(it, "DECOMPILED");
+    it = fromPath.length();
+    while (fromPath[it-1] != '.'){
+        --it;
+        fromPath.pop_back();
+    }
+    fromPath.pop_back();
+}
+
+void decompile(const std::string& path, bool debug){
+    std::ios_base::sync_with_stdio(false);
+
+    cout << endl << "Working with '" << path << "'" << endl;
+
+    std::ifstream streamFile(path, std::ios::binary | std::ios::in);
+    if (streamFile.fail()){
+        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | streamFile.fail() returns /* UNREACHABLE IMPORT FILE */";
+        exit(2);
     }
 
+    string newPath = resultFileName(path);
+
+    std::ofstream decompiledFile(newPath, std::ios::binary | std::ios::out);
+    if (!decompiledFile.fail()){
+        decompiledFile.clear();
+    }
+    if (decompiledFile.fail()){
+        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | decompiledFile.fail() returns /* UNREACHABLE IMPORT FILE */";
+        exit(2);
+    }
+
+    std::cout << "Generating tree by stream data..." << std::endl;
+    Node* treeHead = readTree(streamFile, debug);
+
+    std::cout << "Generating bits stream from stream file..." << std::endl;
+    string stream = readCompressedData(streamFile);
+
+
+    std::cout << "Converting stream data to export file..." << std::endl;
+    //std::cout << stream << std::endl;
+    decompress(decompiledFile, treeHead, stream, debug);
     decompiledFile.close();
 }
