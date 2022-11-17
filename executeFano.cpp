@@ -27,9 +27,7 @@ void startAlgorithm(const std::string& path, bool v){
 
     std::cout << std::endl << "Generating keys..." << std::endl;
 
-    bool efficiency = main.isEfficiency();
-
-    if (!efficiency){
+    if (!main.isEfficiency()){
         std::cout << "Attention: this file compressed inefficient." << std::endl;
         main.generateInefficient(path);
         cout << endl << endl;
@@ -51,19 +49,20 @@ void startAlgorithm(const std::string& path, bool v){
     cout << endl << "File successfully archived!";
 }
 
-Node* readTree(std::ifstream &source, bool debug){
-    Node* head = new Node;
-    char count;
-    source.read(&count, 1);
+void readInt(std::ifstream &source, string& binary, int& valueExport){
+    // Считывается значение
+    char value;
+    source.read(&value, 1);
+    valueExport = value;
+    // Считывание количества байт
+    char bitsCount;
+    source.read(&bitsCount, 1);
 
-    while (count > 0) {
-        // Считывание символа
-        char value;
-        source.read(&value, 1);
+    while (bitsCount > 0){
         // Считывание нулей
         char nulls;
         source.read(&nulls, 1);
-        // Считывание значения
+        // Считывание части строки
         char byte;
         source.read(&byte, 1);
 
@@ -78,6 +77,22 @@ Node* readTree(std::ifstream &source, bool debug){
             bits.insert(0, "0");
             nulls--;
         }
+        binary += bits;
+
+        bitsCount--;
+    }
+}
+
+Node* readTree(std::ifstream &source, bool debug){
+    Node* head = new Node;
+    char count;
+    source.read(&count, 1);
+
+    while (count > 0) {
+        int value;
+        string bits;
+
+        readInt(source, bits, value);
 
         Node* thisNode = head;
         string str;

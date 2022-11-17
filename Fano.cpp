@@ -74,7 +74,13 @@ Fano::~Fano() {
 }
 
 bool Fano::isEfficiency(){
-    return storedCode.size() != 256;
+    if (storedCode.size() != 256) return true;
+
+    for (auto & i : storedCode){
+        if (i.second.size() != 8) return false;
+    }
+
+    return true;
 }
 
 vector< pair<int, int> >::iterator findVectorIt(vector<pair<int, int>>* vec, int value){
@@ -105,6 +111,51 @@ void Fano::generateInefficient(const string& path){
     while (streamFile.read(&ch, 1)) archiveFile.write(&ch, 1);
 }
 
+void writeInt(std::ostream& file, char value, string& str){
+    // Записали значение
+    file.write(&value, 1);
+
+    // Подсчет сколько надо выделить байт
+    char size = str.size() / 8;
+    if (str.size() % 8 > 0) size++;
+
+    // Записали количество байт сколько надо считать
+    file.write(&size, 1);
+
+    // Запись
+    for (int i = 0; i < str.length(); i++){
+        // Записать концовку
+        if (str.length() < 8){
+            string temp(str, i, str.length());
+
+            // ПОдсчет количестве нулей в начале
+            char k = 0;
+            while (temp[k] == '0') k++;
+            // Запись количестве нулей в начале
+            file.write(&k, 1);
+
+            // Запись string в виде числа
+            k = stoi(temp, nullptr, 2);
+            file.write(&k, 1);
+
+            break;
+        }
+        string temp(str, i, i+8);
+
+        // Подсчет количестве нулей в начале
+        char k = 0;
+        while (temp[k] == '0') k++;
+        // Запись количестве нулей в начале
+        file.write(&k, 1);
+
+        // Запись string в виде числа
+        k = stoi(temp, nullptr, 2);
+        file.write(&k, 1);
+
+        i = i + 7;
+    }
+}
+
 void Fano::generateKeyFile(const string &path) {
     std::ofstream keyFile;
     keyFile.open(path, std::ios::binary);
@@ -118,7 +169,7 @@ void Fano::generateKeyFile(const string &path) {
     char size = storedCode.size();
     keyFile.write(&size, 1);
 
-    // Данные записываются: [символ][количество нулей в начале][HEX значения]
+    // Данные записываются: [символ][кол-во байт которые надо считать] ||[количество нулей в начале][HEX значения]||
     // Если значение начинается с 0, то количество нулей до первой единицы записывается во вторые []
     //
     // '0100', HEX представление 4 = '100', но из этого не построится дерево.
@@ -128,17 +179,9 @@ void Fano::generateKeyFile(const string &path) {
     // То есть запишется: [символ][00][значение]
 
     for (int i = 0; i < storedCode.size(); i++){
-        char first = storedCode.at(i).first;
-        char second = stoi(storedCode.at(i).second, nullptr, 2);
 
-        char null = 0;
-        while ((storedCode.at(i).second[(int)null] == '0') && (null < storedCode.at(i).second.size())){
-            null++;
-        }
+        writeInt(keyFile, storedCode.at(i).first, storedCode.at(i).second);
 
-        keyFile.write(&first, 1);
-        keyFile.write(&null, 1);
-        keyFile.write(&second, 1);
         std::cout << std::dec << i << " ";
         if ((i % 100 == 0) && (i > 100)){
             std::cout << std::endl;
