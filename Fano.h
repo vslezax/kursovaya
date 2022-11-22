@@ -4,9 +4,6 @@
 #include "tree.h"
 #include <vector>
 
-using std::cout;
-using std::endl;
-
 class Fano {
 private:
     vector< pair<int, int> > storedUsages;

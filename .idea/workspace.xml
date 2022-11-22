@@ -31,12 +31,16 @@
   <component name="ChangeListManager">
     <list default="true" id="3e95f460-7a1f-4b88-bc3b-339223e99364" name="Default Changelist" comment="not working with large files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Fano.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Fano.h" beforeDir="false" afterPath="$PROJECT_DIR$/Fano.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/Fano.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/Fano.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/executeFano.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/executeFano.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kursovaya.dir/main.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/kursovaya.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/executeFano.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/executeFano.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +75,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="kursovaya" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-d -v c:\8\1.bmp.archive" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="kursovaya" TARGET_NAME="kursovaya" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="kursovaya" RUN_TARGET_NAME="kursovaya">
+    <configuration name="kursovaya" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-d -v c:\8\1.mp4.archive" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="kursovaya" TARGET_NAME="kursovaya" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="kursovaya" RUN_TARGET_NAME="kursovaya">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -132,6 +136,8 @@
       <workItem from="1668458392014" duration="6736000" />
       <workItem from="1668635228425" duration="927000" />
       <workItem from="1668637552591" duration="1738000" />
+      <workItem from="1669065827906" duration="866000" />
+      <workItem from="1669066762173" duration="1561000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed decompile(...)">
       <created>1666690460008</created>
@@ -179,10 +185,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="not working with large files" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="338" y="155" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1668638640488">
+    <state x="338" y="155" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1669066440686">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="338" y="155" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668638640488" />
+    <state x="338" y="155" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1669066440686" />
     <state x="703" y="258" key="#xdebugger.XInspectDialog" timestamp="1666373912865">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -191,22 +197,22 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state width="405" height="466" key="DebuggerActiveHint/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1664130371787" />
-    <state width="1637" height="271" key="GridCell.Tab.0.bottom" timestamp="1668641765060">
+    <state width="1637" height="271" key="GridCell.Tab.0.bottom" timestamp="1669066695585">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="271" key="GridCell.Tab.0.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668641765060" />
-    <state width="1637" height="271" key="GridCell.Tab.0.center" timestamp="1668641765060">
+    <state width="1637" height="271" key="GridCell.Tab.0.bottom/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1669066695585" />
+    <state width="1637" height="271" key="GridCell.Tab.0.center" timestamp="1669066695585">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="271" key="GridCell.Tab.0.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668641765060" />
-    <state width="1637" height="271" key="GridCell.Tab.0.left" timestamp="1668641765060">
+    <state width="1637" height="271" key="GridCell.Tab.0.center/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1669066695585" />
+    <state width="1637" height="271" key="GridCell.Tab.0.left" timestamp="1669066695584">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="271" key="GridCell.Tab.0.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668641765060" />
-    <state width="1637" height="271" key="GridCell.Tab.0.right" timestamp="1668641765060">
+    <state width="1637" height="271" key="GridCell.Tab.0.left/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1669066695584" />
+    <state width="1637" height="271" key="GridCell.Tab.0.right" timestamp="1669066695585">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1637" height="271" key="GridCell.Tab.0.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1668641765060" />
+    <state width="1637" height="271" key="GridCell.Tab.0.right/0.0.1680.1010/-1280.21.1280.984@0.0.1680.1010" timestamp="1669066695585" />
     <state width="1637" height="270" key="GridCell.Tab.1.bottom" timestamp="1668636159940">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>

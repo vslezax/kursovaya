@@ -3,10 +3,6 @@
 #include "Fano.h"
 #include <algorithm>
 
-using std::cout;
-using std::vector;
-using std::endl;
-
 // https://iq.opengenus.org/sorting-vector-in-cpp/
 bool compare(pair<char, int> a, pair<char, int> b){
     return a.second > b.second;
@@ -18,7 +14,7 @@ Fano::Fano(const string& pathToFile, bool v) {
     std::ifstream file(pathToFile, std::ios::binary | std::ios::in);
 
     if (file.fail()){
-        cout << "Fano.cpp::Fano(const string& pathToFile, char viewGeneration)::20::9 | Fano(const string& pathToFile, char viewGeneration) returns /* UNREACHABLE IMPORT FILE */";
+        std::cout << "Fano.cpp::Fano(const string& pathToFile, char viewGeneration)::20::9 | Fano(const string& pathToFile, char viewGeneration) returns /* UNREACHABLE IMPORT FILE */";
         exit(2);
     }
 
@@ -172,11 +168,13 @@ void Fano::generateKeyFile(const string &path) {
     // Данные записываются: [символ][кол-во байт которые надо считать] ||[количество нулей в начале][HEX значения]||
     // Если значение начинается с 0, то количество нулей до первой единицы записывается во вторые []
     //
+    // Знаком || помечаются границы послежовательности для записи двоичного представления
+    //
     // '0100', HEX представление 4 = '100', но из этого не построится дерево.
-    // То есть запишется: [символ][01][04]
+    // То есть запишется: [символ] ||[01][04] ||
     //
     // Если значение начинается с 1, то ничего не трубется.
-    // То есть запишется: [символ][00][значение]
+    // То есть запишется: [символ] ||[00][значение]||
 
     for (int i = 0; i < storedCode.size(); i++){
 
@@ -196,14 +194,14 @@ void Fano::generateArchived(const string &pathToFile, bool v) {
 
     std::ifstream streamFile(pathToFile, std::ios::binary | std::ios::in);
     if (streamFile.fail()){
-        cout << endl << "Fano.cpp::132::9 -- generateArchived() returns /* UNREACHABLE IMPORT FILE */";
+        std::cout << std::endl << "Fano.cpp::132::9 -- generateArchived() returns /* UNREACHABLE IMPORT FILE */";
         exit(3);
     }
 
     string stream;
     char ch;
 
-    if (v) cout << endl << "Scanning... ";
+    if (v) std::cout << std::endl << "Scanning... ";
     unsigned long i = 0;
     while(streamFile.read(&ch, 1)){
         if ((i % 1000000 == 0) && (i > 0) && (v)){
@@ -213,7 +211,7 @@ void Fano::generateArchived(const string &pathToFile, bool v) {
         while ((it != storedCode.end()) && (it->first != ch)) ++it;
 
         if (it == storedCode.end()){
-            cout << "Fano.cpp::generateArchived(const string &pathToFile)::127::19 | Not found relation between [streamFile >> ch] and [storedCode]";
+            std::cout << "Fano.cpp::generateArchived(const string &pathToFile)::127::19 | Not found relation between [streamFile >> ch] and [storedCode]";
             exit(4);
         }
 

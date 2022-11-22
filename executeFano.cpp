@@ -17,22 +17,22 @@ void err(){
 void startAlgorithm(const std::string& path, bool v){
     std::ios_base::sync_with_stdio(false);
 
-    cout << endl << "Working with '" << path << "'" << endl;
+    std::cout << std::endl << "Working with '" << path << "'" << std::endl;
 
     // Считывание потока данных с файла
     // Заполнение storedUsages, подсчет количества использований
     Fano main(path, v);
 
-    if (v) cout << main << endl;
+    if (v) std::cout << main << std::endl;
 
     std::cout << std::endl << "Generating keys..." << std::endl;
 
     if (!main.isEfficiency()){
         std::cout << "Attention: this file compressed inefficient." << std::endl;
         main.generateInefficient(path);
-        cout << endl << endl;
-        cout << path + ".archive  -  created.";
-        cout << endl << "File successfully archived!" << endl << endl;
+        std::cout << std::endl << std::endl;
+        std::cout << path + ".archive  -  created.";
+        std::cout << std::endl << "File successfully archived!" << std::endl << std::endl;
         return;
     }
 
@@ -44,9 +44,9 @@ void startAlgorithm(const std::string& path, bool v){
     // Создание archive
     main.generateArchived(path, v);
 
-    cout << endl;
-    cout << path + ".archive  -  created.";
-    cout << endl << "File successfully archived!";
+    std::cout << std::endl;
+    std::cout << path + ".archive  -  created.";
+    std::cout << std::endl << "File successfully archived!";
 }
 
 void readInt(std::ifstream &source, string& binary, int& valueExport){
@@ -110,10 +110,10 @@ Node* readTree(std::ifstream &source, bool debug){
             }
         }
         thisNode->setValue(value);
-        if (debug) cout << "Add: " << thisNode->returnValue() << " = " << thisNode->returnStr() << endl;
+        if (debug) std::cout << "Add: " << thisNode->returnValue() << " = " << thisNode->returnStr() << std::endl;
         count--;
     }
-    if (debug) cout << endl;
+    if (debug) std::cout << std::endl;
     return head;
 }
 
@@ -182,6 +182,7 @@ string resultFileName(string fromPath){
 
 void decompressInefficient(std::ifstream& streamFile, std::ofstream& decompiledFile){
     std::cout << "Copying data from stream file to decompiled file..." << std::endl;
+    std::cout << "Converting stream data to export file..." << std::endl;
     char ch;
     while (streamFile.read(&ch, 1)) decompiledFile.write(&ch, 1);
 }
@@ -199,11 +200,11 @@ bool isInefficient(std::ifstream& file){
 void decompile(const std::string& path, bool debug){
     std::ios_base::sync_with_stdio(false);
 
-    cout << endl << "Working with '" << path << "'" << endl;
+    std::cout << std::endl << "Working with '" << path << "'" << std::endl;
 
     std::ifstream streamFile(path, std::ios::binary | std::ios::in);
     if (streamFile.fail()){
-        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | streamFile.fail() returns /* UNREACHABLE IMPORT FILE */";
+        std::cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | streamFile.fail() returns /* UNREACHABLE IMPORT FILE */";
         exit(2);
     }
 
@@ -212,12 +213,14 @@ void decompile(const std::string& path, bool debug){
     std::ofstream decompiledFile(newPath, std::ios::binary | std::ios::out);
     if (!decompiledFile.fail()) decompiledFile.clear();
     if (decompiledFile.fail()){
-        cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | decompiledFile.fail() returns /* UNREACHABLE IMPORT FILE */";
+        std::cout << "executeFano.cpp::decompile(const std::string& path)::92::9 | decompiledFile.fail() returns /* UNREACHABLE IMPORT FILE */";
         exit(2);
     }
 
     if (isInefficient(streamFile)){
         decompressInefficient(streamFile, decompiledFile);
+        std::cout << std::endl << "" << newPath << " - created!" << std::endl;
+        std::cout << "File successfully unpacked!" << std::endl;
         return;
     }
 
