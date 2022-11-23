@@ -23,19 +23,19 @@ public:
 string intToHexStr(int value);
 
 inline std::ostream& operator<<(std::ostream& outLine, const Fano& outClass){
-    cout << "storedUsages:" << endl;
+    std::cout << "storedUsages:" << std::endl;
     for (auto &i : outClass.storedUsages){
         outLine << "'" << (int)i.first << "'" << "[" << (char)i.first << "]";
         outLine << " = ";
         outLine << i.second;
-        outLine << endl;
+        outLine << std::endl;
     }
-    cout << "Code:" << endl;
+    std::cout << "Code:" << std::endl;
     for (auto &i : outClass.storedCode){
         outLine << "'" << std::hex << std::uppercase << (int)i.first << "'" << "[" << (char)i.first << "]";
         outLine << " = ";
         outLine << i.second;
-        outLine << endl;
+        outLine << std::endl;
     }
     return outLine;
 }

@@ -1,4 +1,32 @@
 C:\Users\Administrator\AppData\Local\JetBrains\CLion2020.1\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Administrator/CLionProjects/kursovaya
--- Configuring done
--- Generating done
--- Build files have been written to: /cygdrive/c/Users/Administrator/CLionProjects/kursovaya/cmake-build-debug
+-- The C compiler identification is unknown
+-- The CXX compiler identification is unknown
+CMake Error at CMakeLists.txt:2 (project):
+  The CMAKE_C_COMPILER:
+
+    /usr/bin/cc
+
+  is not a full path to an existing compiler tool.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CC" or the CMake cache entry CMAKE_C_COMPILER to the full path to
+  the compiler, or to the compiler name if it is in the PATH.
+
+
+CMake Error at CMakeLists.txt:2 (project):
+  The CMAKE_CXX_COMPILER:
+
+    /usr/bin/c++.exe
+
+  is not a full path to an existing compiler tool.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "CXX" or the CMake cache entry CMAKE_CXX_COMPILER to the full path
+  to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/cmake-build-debug/CMakeFiles/CMakeError.log".
+Cannot read C:\Users\Administrator\CLionProjects\kursovaya\cmake-build-debug\CMakeFiles\3.16.5\CMakeCCompiler.cmake
+Cannot read C:\Users\Administrator\CLionProjects\kursovaya\cmake-build-debug\CMakeFiles\3.16.5\CMakeCXXCompiler.cmake
